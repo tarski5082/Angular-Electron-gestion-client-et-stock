@@ -1,0 +1,70 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+    <div class="field">
+      <label for="prenom">Prénom</label>
+      <input type="text" id="prenom" formControlName="prenom" placeholder="Jean">
+    </div>
+
+    <div class="field">
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" formControlName="nom" placeholder="Dupont">
+    </div>
+  </div>
+
+  <!-- We wrap the address fields inside the address FormGroup -->
+  <div formGroupName="adresse">
+    
+    <div class="row">
+      <div class="field" style="flex: 3;">
+        <label for="rue">Rue</label>
+        <input type="text" id="rue" formControlName="rue" placeholder="Rue de Bruxelles">
+      </div>
+
+      <div class="field">
+        <label for="numero">N°</label>
+        <input type="text" id="numero" formControlName="numero" placeholder="12">
+      </div>
+
+      <div class="field">
+        <label for="boite">Boîte</label>
+        <input type="text" id="boite" formControlName="boite" placeholder="A">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="cp">Code postal</label>
+        <input type="text" id="cp" formControlName="cp" placeholder="6000">
+      </div>
+
+      <div class="field" style="flex: 2;">
+        <label for="ville">Ville</label>
+        <input type="text" id="ville" formControlName="ville" placeholder="Charleroi">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="province">Province</label>
+      <select id="province" formControlName="province">
+        <option value="Bruxelles-Capitale">Bruxelles-Capitale</option>
+        <option value="Hainaut">Hainaut</option>
+        <option value="Liège">Liège</option>
+        <option value="Namur">Namur</option>
+        <option value="Luxembourg">Luxembourg</option>
+        <option value="Brabant wallon">Brabant wallon</option>
+        <option value="Anvers">Anvers</option>
+        <option value="Flandre orientale">Flandre orientale</option>
+        <option value="Flandre occidentale">Flandre occidentale</option>
+        <option value="Limbourg">Limbourg</option>
+        <option value="Brabant flamand">Brabant flamand</option>
+      </select>
+    </div>
+
+
+  </div>
+
+  <!-- Optional: Disable button if the form is completely untouched/invalid -->
+  <button type="submit" [disabled]="customerForm.invalid">Ajouter</button>
+
+</form>

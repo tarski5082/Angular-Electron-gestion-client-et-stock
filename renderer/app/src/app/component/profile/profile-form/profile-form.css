@@ -1,0 +1,132 @@
+/* Container adjustments (optional, ensures proper padding across layouts) */
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #333333;
+}
+
+/* Row Layout: Adapts layout automatically using flexbox */
+.row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+/* Responsive fallback for rows on small mobile devices */
+@media (max-width: 480px) {
+  .row {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+/* Field Container */
+.field {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Rows dynamically share equal spacing unless style overrides it (like flex: 3) */
+  margin-bottom: 1.25rem;
+}
+
+/* Ensure elements inside structured blocks handle margins nicely */
+.row .field {
+  margin-bottom: 0;
+}
+
+/* Labels styling */
+label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+/* Inputs & Dropdowns Common Styles */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  font-size: 1rem;
+  color: #2d3748;
+  background-color: #f7fafc;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  box-sizing: border-box; /* Crucial to prevent layout elements from bleeding out */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Select specific overrides to ensure it scales correctly */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+/* Placeholders spacing and contrast tint */
+input::placeholder {
+  color: #a0aec0;
+}
+
+/* Focus interactive behaviors */
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: #3182ce; /* Modern operational blue focus ring */
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+/* Submit Action Button styling */
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #3182ce;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, transform 0.1s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #2b6cb0;
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Angular validation state helper (Optional: makes invalid inputs red after interactions) */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: #e53e3e;
+  background-color: #fff5f5;
+}
+
+/* Disabled styling state (e.g., if you decide to block user modifications on 'Pays') */
+input:disabled {
+  background-color: #edf2f7;
+  color: #718096;
+  cursor: not-allowed;
+}
+
+/* When the Angular form keeps the button disabled */
+button[type="submit"]:disabled {
+  background-color: #cbd5e0;
+  color: #718096;
+  cursor: not-allowed;
+  transform: none;
+}
