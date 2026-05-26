@@ -9,5 +9,8 @@ export class CustomerService {
     addCustomer(customer:CustomerProfile):Promise<any>{
       return this.electron.getApi().addCustomer(customer);
     }
+    loadCustomer():Promise<any>{
+      return this.electron.getApi().loadCustomer();
+    }
 
 }

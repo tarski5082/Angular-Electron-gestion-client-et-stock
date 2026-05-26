@@ -51,8 +51,14 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Localite: 'Localite',
+  Adresse: 'Adresse',
   Client: 'Client',
-  Adresse: 'Adresse'
+  Categorie: 'Categorie',
+  Sous_categorie: 'Sous_categorie',
+  ProduitStock: 'ProduitStock',
+  ProduitCommande: 'ProduitCommande',
+  Facture: 'Facture'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -68,27 +74,87 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const LocaliteScalarFieldEnum = {
+  id_localite: 'id_localite',
+  code_postale: 'code_postale',
+  province: 'province',
+  localite: 'localite'
+} as const
+
+export type LocaliteScalarFieldEnum = (typeof LocaliteScalarFieldEnum)[keyof typeof LocaliteScalarFieldEnum]
+
+
+export const AdresseScalarFieldEnum = {
+  id_adresse: 'id_adresse',
+  rue: 'rue',
+  numero: 'numero',
+  boite: 'boite',
+  id_localite: 'id_localite'
+} as const
+
+export type AdresseScalarFieldEnum = (typeof AdresseScalarFieldEnum)[keyof typeof AdresseScalarFieldEnum]
+
+
 export const ClientScalarFieldEnum = {
-  id: 'id',
-  prenom: 'prenom',
+  id_client: 'id_client',
   nom: 'nom',
-  adresseId: 'adresseId'
+  prenom: 'prenom',
+  email: 'email',
+  id_adresse: 'id_adresse'
 } as const
 
 export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
 
 
-export const AdresseScalarFieldEnum = {
-  id: 'id',
-  rue: 'rue',
-  numero: 'numero',
-  boite: 'boite',
-  codePostal: 'codePostal',
-  ville: 'ville',
-  province: 'province'
+export const CategorieScalarFieldEnum = {
+  id_cat: 'id_cat',
+  intitule: 'intitule'
 } as const
 
-export type AdresseScalarFieldEnum = (typeof AdresseScalarFieldEnum)[keyof typeof AdresseScalarFieldEnum]
+export type CategorieScalarFieldEnum = (typeof CategorieScalarFieldEnum)[keyof typeof CategorieScalarFieldEnum]
+
+
+export const Sous_categorieScalarFieldEnum = {
+  id_sous_cat: 'id_sous_cat',
+  intitule_sous_cat: 'intitule_sous_cat',
+  id_cat: 'id_cat'
+} as const
+
+export type Sous_categorieScalarFieldEnum = (typeof Sous_categorieScalarFieldEnum)[keyof typeof Sous_categorieScalarFieldEnum]
+
+
+export const ProduitStockScalarFieldEnum = {
+  id_produit: 'id_produit',
+  urlImage: 'urlImage',
+  intitule_produit: 'intitule_produit',
+  quantite: 'quantite',
+  prix_unitaire: 'prix_unitaire',
+  id_sous_cat: 'id_sous_cat'
+} as const
+
+export type ProduitStockScalarFieldEnum = (typeof ProduitStockScalarFieldEnum)[keyof typeof ProduitStockScalarFieldEnum]
+
+
+export const ProduitCommandeScalarFieldEnum = {
+  id_commande: 'id_commande',
+  id_produit: 'id_produit',
+  id_facture: 'id_facture',
+  quantite: 'quantite'
+} as const
+
+export type ProduitCommandeScalarFieldEnum = (typeof ProduitCommandeScalarFieldEnum)[keyof typeof ProduitCommandeScalarFieldEnum]
+
+
+export const FactureScalarFieldEnum = {
+  id_facture: 'id_facture',
+  id_client: 'id_client',
+  date_paiement: 'date_paiement',
+  moyen: 'moyen',
+  montant: 'montant',
+  etat: 'etat'
+} as const
+
+export type FactureScalarFieldEnum = (typeof FactureScalarFieldEnum)[keyof typeof FactureScalarFieldEnum]
 
 
 export const SortOrder = {

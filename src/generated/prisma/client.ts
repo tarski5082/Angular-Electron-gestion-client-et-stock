@@ -29,8 +29,8 @@ export * from "./enums"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Clients
- * const clients = await prisma.client.findMany()
+ * // Fetch zero or more Localites
+ * const localites = await prisma.localite.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -40,12 +40,42 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Client
+ * Model Localite
  * 
  */
-export type Client = Prisma.ClientModel
+export type Localite = Prisma.LocaliteModel
 /**
  * Model Adresse
  * 
  */
 export type Adresse = Prisma.AdresseModel
+/**
+ * Model Client
+ * 
+ */
+export type Client = Prisma.ClientModel
+/**
+ * Model Categorie
+ * 
+ */
+export type Categorie = Prisma.CategorieModel
+/**
+ * Model Sous_categorie
+ * 
+ */
+export type Sous_categorie = Prisma.Sous_categorieModel
+/**
+ * Model ProduitStock
+ * 
+ */
+export type ProduitStock = Prisma.ProduitStockModel
+/**
+ * Model ProduitCommande
+ * 
+ */
+export type ProduitCommande = Prisma.ProduitCommandeModel
+/**
+ * Model Facture
+ * 
+ */
+export type Facture = Prisma.FactureModel

@@ -8,6 +8,12 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Client'
+export type * from './models/Localite'
 export type * from './models/Adresse'
+export type * from './models/Client'
+export type * from './models/Categorie'
+export type * from './models/Sous_categorie'
+export type * from './models/ProduitStock'
+export type * from './models/ProduitCommande'
+export type * from './models/Facture'
 export type * from './commonInputTypes'

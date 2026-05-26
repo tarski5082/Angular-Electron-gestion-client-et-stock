@@ -1,6 +1,6 @@
 import { Component,inject } from '@angular/core';
 import {ReactiveFormsModule,FormBuilder,Validators} from '@angular/forms';
-import { CustomerProfile } from '../../../../types/electron';
+import { CustomerProfile} from '../../../../types/customer-profil';
 @Component({
   selector: 'app-profile-form',
   imports: [ReactiveFormsModule],
@@ -18,9 +18,11 @@ export class ProfileForm {
         rue: ['', Validators.required],
         numero: ['', Validators.required],
         boite: [''], // Optional field
-        cp: ['', [Validators.required, Validators.pattern(/^[0-9]{4}$/)]], // Belgian CP format
-        ville: ['', Validators.required],
-        province: ['Hainaut', Validators.required], 
+        localite:this.fb.group({
+          code_postal:[Validators, Validators.pattern(/^[0-9]{4}$/)],
+          province:['Hainaut', Validators],
+          ville:['', Validators]
+        })
       })
     });
 
@@ -38,9 +40,11 @@ export class ProfileForm {
             rue: formValue.adresse.rue ?? '',
             numero: formValue.adresse.numero ?? '',
             boite: formValue.adresse.boite || undefined, // Converts empty string '' to undefined if omitted
-            codePostal: formValue.adresse.cp ?? '',       // Mapping 'cp' from form to 'codePostal' in interface
-            ville: formValue.adresse.ville ?? '',
-            province: formValue.adresse.province ?? ''
+            localite?:{
+              code_postal?:formValue.adresse.localite.code_postal ?? '',       // Mapping 'cp' from form to 'codePostal' in interface
+              province?: formValue.adresse.localite.province ?? '',
+              ville?: formValue.adresse.localite.ville ?? ''
+            } 
           }
         };
         window.api.addCustomer(newCustomer);

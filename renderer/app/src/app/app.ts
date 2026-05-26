@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ProfileForm } from './component/profile/profile-form/profile-form';
+import { RouterOutlet, RouterLinkWithHref,RouterLinkActive,RouterLink } from '@angular/router';
+
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,ProfileForm],
+  imports: [RouterOutlet, RouterLinkWithHref,RouterLinkActive,RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

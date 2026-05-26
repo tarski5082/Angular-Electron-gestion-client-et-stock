@@ -1,0 +1,32 @@
+.client-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.btn-delete {
+      background: #dc2626;
+      color: white;
+}
+
+.client-name {
+      font-weight: bold;
+      color: #222;
+}
+
+.client-address {
+      color: #666;
+      font-size: 14px;
+}
+
+button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+}

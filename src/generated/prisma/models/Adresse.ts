@@ -27,81 +27,73 @@ export type AggregateAdresse = {
 }
 
 export type AdresseAvgAggregateOutputType = {
-  id: number | null
+  id_adresse: number | null
+  id_localite: number | null
 }
 
 export type AdresseSumAggregateOutputType = {
-  id: number | null
+  id_adresse: number | null
+  id_localite: number | null
 }
 
 export type AdresseMinAggregateOutputType = {
-  id: number | null
+  id_adresse: number | null
   rue: string | null
   numero: string | null
   boite: string | null
-  codePostal: string | null
-  ville: string | null
-  province: string | null
+  id_localite: number | null
 }
 
 export type AdresseMaxAggregateOutputType = {
-  id: number | null
+  id_adresse: number | null
   rue: string | null
   numero: string | null
   boite: string | null
-  codePostal: string | null
-  ville: string | null
-  province: string | null
+  id_localite: number | null
 }
 
 export type AdresseCountAggregateOutputType = {
-  id: number
+  id_adresse: number
   rue: number
   numero: number
   boite: number
-  codePostal: number
-  ville: number
-  province: number
+  id_localite: number
   _all: number
 }
 
 
 export type AdresseAvgAggregateInputType = {
-  id?: true
+  id_adresse?: true
+  id_localite?: true
 }
 
 export type AdresseSumAggregateInputType = {
-  id?: true
+  id_adresse?: true
+  id_localite?: true
 }
 
 export type AdresseMinAggregateInputType = {
-  id?: true
+  id_adresse?: true
   rue?: true
   numero?: true
   boite?: true
-  codePostal?: true
-  ville?: true
-  province?: true
+  id_localite?: true
 }
 
 export type AdresseMaxAggregateInputType = {
-  id?: true
+  id_adresse?: true
   rue?: true
   numero?: true
   boite?: true
-  codePostal?: true
-  ville?: true
-  province?: true
+  id_localite?: true
 }
 
 export type AdresseCountAggregateInputType = {
-  id?: true
+  id_adresse?: true
   rue?: true
   numero?: true
   boite?: true
-  codePostal?: true
-  ville?: true
-  province?: true
+  id_localite?: true
   _all?: true
 }
 
@@ -192,13 +184,11 @@ export type AdresseGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 export type AdresseGroupByOutputType = {
-  id: number
+  id_adresse: number
   rue: string
   numero: string
-  boite: string | null
-  codePostal: string
-  ville: string
-  province: string
+  boite: string
+  id_localite: number | null
   _count: AdresseCountAggregateOutputType | null
   _avg: AdresseAvgAggregateOutputType | null
   _sum: AdresseSumAggregateOutputType | null
@@ -225,49 +215,44 @@ export type AdresseWhereInput = {
   AND?: Prisma.AdresseWhereInput | Prisma.AdresseWhereInput[]
   OR?: Prisma.AdresseWhereInput[]
   NOT?: Prisma.AdresseWhereInput | Prisma.AdresseWhereInput[]
-  id?: Prisma.IntFilter<"Adresse"> | number
+  id_adresse?: Prisma.IntFilter<"Adresse"> | number
   rue?: Prisma.StringFilter<"Adresse"> | string
   numero?: Prisma.StringFilter<"Adresse"> | string
-  boite?: Prisma.StringNullableFilter<"Adresse"> | string | null
-  codePostal?: Prisma.StringFilter<"Adresse"> | string
-  ville?: Prisma.StringFilter<"Adresse"> | string
-  province?: Prisma.StringFilter<"Adresse"> | string
+  boite?: Prisma.StringFilter<"Adresse"> | string
+  id_localite?: Prisma.IntNullableFilter<"Adresse"> | number | null
+  localite?: Prisma.XOR<Prisma.LocaliteNullableScalarRelationFilter, Prisma.LocaliteWhereInput> | null
   clients?: Prisma.ClientListRelationFilter
 }
 
 export type AdresseOrderByWithRelationInput = {
-  id?: Prisma.SortOrder
+  id_adresse?: Prisma.SortOrder
   rue?: Prisma.SortOrder
   numero?: Prisma.SortOrder
-  boite?: Prisma.SortOrderInput | Prisma.SortOrder
-  codePostal?: Prisma.SortOrder
-  ville?: Prisma.SortOrder
-  province?: Prisma.SortOrder
+  boite?: Prisma.SortOrder
+  id_localite?: Prisma.SortOrderInput | Prisma.SortOrder
+  localite?: Prisma.LocaliteOrderByWithRelationInput
   clients?: Prisma.ClientOrderByRelationAggregateInput
 }
 
 export type AdresseWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id_adresse?: number
   AND?: Prisma.AdresseWhereInput | Prisma.AdresseWhereInput[]
   OR?: Prisma.AdresseWhereInput[]
   NOT?: Prisma.AdresseWhereInput | Prisma.AdresseWhereInput[]
   rue?: Prisma.StringFilter<"Adresse"> | string
   numero?: Prisma.StringFilter<"Adresse"> | string
-  boite?: Prisma.StringNullableFilter<"Adresse"> | string | null
-  codePostal?: Prisma.StringFilter<"Adresse"> | string
-  ville?: Prisma.StringFilter<"Adresse"> | string
-  province?: Prisma.StringFilter<"Adresse"> | string
+  boite?: Prisma.StringFilter<"Adresse"> | string
+  id_localite?: Prisma.IntNullableFilter<"Adresse"> | number | null
+  localite?: Prisma.XOR<Prisma.LocaliteNullableScalarRelationFilter, Prisma.LocaliteWhereInput> | null
   clients?: Prisma.ClientListRelationFilter
-}, "id">
+}, "id_adresse">
 
 export type AdresseOrderByWithAggregationInput = {
-  id?: Prisma.SortOrder
+  id_adresse?: Prisma.SortOrder
   rue?: Prisma.SortOrder
   numero?: Prisma.SortOrder
-  boite?: Prisma.SortOrderInput | Prisma.SortOrder
-  codePostal?: Prisma.SortOrder
-  ville?: Prisma.SortOrder
-  province?: Prisma.SortOrder
+  boite?: Prisma.SortOrder
+  id_localite?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.AdresseCountOrderByAggregateInput
   _avg?: Prisma.AdresseAvgOrderByAggregateInput
   _max?: Prisma.AdresseMaxOrderByAggregateInput
@@ -279,127 +264,170 @@ export type AdresseScalarWhereWithAggregatesInput = {
   AND?: Prisma.AdresseScalarWhereWithAggregatesInput | Prisma.AdresseScalarWhereWithAggregatesInput[]
   OR?: Prisma.AdresseScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AdresseScalarWhereWithAggregatesInput | Prisma.AdresseScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Adresse"> | number
+  id_adresse?: Prisma.IntWithAggregatesFilter<"Adresse"> | number
   rue?: Prisma.StringWithAggregatesFilter<"Adresse"> | string
   numero?: Prisma.StringWithAggregatesFilter<"Adresse"> | string
-  boite?: Prisma.StringNullableWithAggregatesFilter<"Adresse"> | string | null
-  codePostal?: Prisma.StringWithAggregatesFilter<"Adresse"> | string
-  ville?: Prisma.StringWithAggregatesFilter<"Adresse"> | string
-  province?: Prisma.StringWithAggregatesFilter<"Adresse"> | string
+  boite?: Prisma.StringWithAggregatesFilter<"Adresse"> | string
+  id_localite?: Prisma.IntNullableWithAggregatesFilter<"Adresse"> | number | null
 }
 
 export type AdresseCreateInput = {
   rue: string
   numero: string
-  boite?: string | null
-  codePostal: string
-  ville: string
-  province: string
+  boite: string
+  localite?: Prisma.LocaliteCreateNestedOneWithoutAdressesInput
   clients?: Prisma.ClientCreateNestedManyWithoutAdresseInput
 }
 
 export type AdresseUncheckedCreateInput = {
-  id?: number
+  id_adresse?: number
   rue: string
   numero: string
-  boite?: string | null
-  codePostal: string
-  ville: string
-  province: string
+  boite: string
+  id_localite?: number | null
   clients?: Prisma.ClientUncheckedCreateNestedManyWithoutAdresseInput
 }
 
 export type AdresseUpdateInput = {
   rue?: Prisma.StringFieldUpdateOperationsInput | string
   numero?: Prisma.StringFieldUpdateOperationsInput | string
-  boite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  codePostal?: Prisma.StringFieldUpdateOperationsInput | string
-  ville?: Prisma.StringFieldUpdateOperationsInput | string
-  province?: Prisma.StringFieldUpdateOperationsInput | string
+  boite?: Prisma.StringFieldUpdateOperationsInput | string
+  localite?: Prisma.LocaliteUpdateOneWithoutAdressesNestedInput
   clients?: Prisma.ClientUpdateManyWithoutAdresseNestedInput
 }
 
 export type AdresseUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id_adresse?: Prisma.IntFieldUpdateOperationsInput | number
   rue?: Prisma.StringFieldUpdateOperationsInput | string
   numero?: Prisma.StringFieldUpdateOperationsInput | string
-  boite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  codePostal?: Prisma.StringFieldUpdateOperationsInput | string
-  ville?: Prisma.StringFieldUpdateOperationsInput | string
-  province?: Prisma.StringFieldUpdateOperationsInput | string
+  boite?: Prisma.StringFieldUpdateOperationsInput | string
+  id_localite?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   clients?: Prisma.ClientUncheckedUpdateManyWithoutAdresseNestedInput
 }
 
 export type AdresseCreateManyInput = {
-  id?: number
+  id_adresse?: number
   rue: string
   numero: string
-  boite?: string | null
-  codePostal: string
-  ville: string
-  province: string
+  boite: string
+  id_localite?: number | null
 }
 
 export type AdresseUpdateManyMutationInput = {
   rue?: Prisma.StringFieldUpdateOperationsInput | string
   numero?: Prisma.StringFieldUpdateOperationsInput | string
-  boite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  codePostal?: Prisma.StringFieldUpdateOperationsInput | string
-  ville?: Prisma.StringFieldUpdateOperationsInput | string
-  province?: Prisma.StringFieldUpdateOperationsInput | string
+  boite?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type AdresseUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id_adresse?: Prisma.IntFieldUpdateOperationsInput | number
   rue?: Prisma.StringFieldUpdateOperationsInput | string
   numero?: Prisma.StringFieldUpdateOperationsInput | string
-  boite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  codePostal?: Prisma.StringFieldUpdateOperationsInput | string
-  ville?: Prisma.StringFieldUpdateOperationsInput | string
-  province?: Prisma.StringFieldUpdateOperationsInput | string
+  boite?: Prisma.StringFieldUpdateOperationsInput | string
+  id_localite?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
-export type AdresseScalarRelationFilter = {
-  is?: Prisma.AdresseWhereInput
-  isNot?: Prisma.AdresseWhereInput
+export type AdresseListRelationFilter = {
+  every?: Prisma.AdresseWhereInput
+  some?: Prisma.AdresseWhereInput
+  none?: Prisma.AdresseWhereInput
+}
+
+export type AdresseOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type AdresseCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  id_adresse?: Prisma.SortOrder
   rue?: Prisma.SortOrder
   numero?: Prisma.SortOrder
   boite?: Prisma.SortOrder
-  codePostal?: Prisma.SortOrder
-  ville?: Prisma.SortOrder
-  province?: Prisma.SortOrder
+  id_localite?: Prisma.SortOrder
 }
 
 export type AdresseAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  id_adresse?: Prisma.SortOrder
+  id_localite?: Prisma.SortOrder
 }
 
 export type AdresseMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  id_adresse?: Prisma.SortOrder
   rue?: Prisma.SortOrder
   numero?: Prisma.SortOrder
   boite?: Prisma.SortOrder
-  codePostal?: Prisma.SortOrder
-  ville?: Prisma.SortOrder
-  province?: Prisma.SortOrder
+  id_localite?: Prisma.SortOrder
 }
 
 export type AdresseMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  id_adresse?: Prisma.SortOrder
   rue?: Prisma.SortOrder
   numero?: Prisma.SortOrder
   boite?: Prisma.SortOrder
-  codePostal?: Prisma.SortOrder
-  ville?: Prisma.SortOrder
-  province?: Prisma.SortOrder
+  id_localite?: Prisma.SortOrder
 }
 
 export type AdresseSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
+  id_adresse?: Prisma.SortOrder
+  id_localite?: Prisma.SortOrder
+}
+
+export type AdresseNullableScalarRelationFilter = {
+  is?: Prisma.AdresseWhereInput | null
+  isNot?: Prisma.AdresseWhereInput | null
+}
+
+export type AdresseCreateNestedManyWithoutLocaliteInput = {
+  create?: Prisma.XOR<Prisma.AdresseCreateWithoutLocaliteInput, Prisma.AdresseUncheckedCreateWithoutLocaliteInput> | Prisma.AdresseCreateWithoutLocaliteInput[] | Prisma.AdresseUncheckedCreateWithoutLocaliteInput[]
+  connectOrCreate?: Prisma.AdresseCreateOrConnectWithoutLocaliteInput | Prisma.AdresseCreateOrConnectWithoutLocaliteInput[]
+  createMany?: Prisma.AdresseCreateManyLocaliteInputEnvelope
+  connect?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+}
+
+export type AdresseUncheckedCreateNestedManyWithoutLocaliteInput = {
+  create?: Prisma.XOR<Prisma.AdresseCreateWithoutLocaliteInput, Prisma.AdresseUncheckedCreateWithoutLocaliteInput> | Prisma.AdresseCreateWithoutLocaliteInput[] | Prisma.AdresseUncheckedCreateWithoutLocaliteInput[]
+  connectOrCreate?: Prisma.AdresseCreateOrConnectWithoutLocaliteInput | Prisma.AdresseCreateOrConnectWithoutLocaliteInput[]
+  createMany?: Prisma.AdresseCreateManyLocaliteInputEnvelope
+  connect?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+}
+
+export type AdresseUpdateManyWithoutLocaliteNestedInput = {
+  create?: Prisma.XOR<Prisma.AdresseCreateWithoutLocaliteInput, Prisma.AdresseUncheckedCreateWithoutLocaliteInput> | Prisma.AdresseCreateWithoutLocaliteInput[] | Prisma.AdresseUncheckedCreateWithoutLocaliteInput[]
+  connectOrCreate?: Prisma.AdresseCreateOrConnectWithoutLocaliteInput | Prisma.AdresseCreateOrConnectWithoutLocaliteInput[]
+  upsert?: Prisma.AdresseUpsertWithWhereUniqueWithoutLocaliteInput | Prisma.AdresseUpsertWithWhereUniqueWithoutLocaliteInput[]
+  createMany?: Prisma.AdresseCreateManyLocaliteInputEnvelope
+  set?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+  disconnect?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+  delete?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+  connect?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+  update?: Prisma.AdresseUpdateWithWhereUniqueWithoutLocaliteInput | Prisma.AdresseUpdateWithWhereUniqueWithoutLocaliteInput[]
+  updateMany?: Prisma.AdresseUpdateManyWithWhereWithoutLocaliteInput | Prisma.AdresseUpdateManyWithWhereWithoutLocaliteInput[]
+  deleteMany?: Prisma.AdresseScalarWhereInput | Prisma.AdresseScalarWhereInput[]
+}
+
+export type AdresseUncheckedUpdateManyWithoutLocaliteNestedInput = {
+  create?: Prisma.XOR<Prisma.AdresseCreateWithoutLocaliteInput, Prisma.AdresseUncheckedCreateWithoutLocaliteInput> | Prisma.AdresseCreateWithoutLocaliteInput[] | Prisma.AdresseUncheckedCreateWithoutLocaliteInput[]
+  connectOrCreate?: Prisma.AdresseCreateOrConnectWithoutLocaliteInput | Prisma.AdresseCreateOrConnectWithoutLocaliteInput[]
+  upsert?: Prisma.AdresseUpsertWithWhereUniqueWithoutLocaliteInput | Prisma.AdresseUpsertWithWhereUniqueWithoutLocaliteInput[]
+  createMany?: Prisma.AdresseCreateManyLocaliteInputEnvelope
+  set?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+  disconnect?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+  delete?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+  connect?: Prisma.AdresseWhereUniqueInput | Prisma.AdresseWhereUniqueInput[]
+  update?: Prisma.AdresseUpdateWithWhereUniqueWithoutLocaliteInput | Prisma.AdresseUpdateWithWhereUniqueWithoutLocaliteInput[]
+  updateMany?: Prisma.AdresseUpdateManyWithWhereWithoutLocaliteInput | Prisma.AdresseUpdateManyWithWhereWithoutLocaliteInput[]
+  deleteMany?: Prisma.AdresseScalarWhereInput | Prisma.AdresseScalarWhereInput[]
+}
+
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type AdresseCreateNestedOneWithoutClientsInput = {
@@ -408,35 +436,80 @@ export type AdresseCreateNestedOneWithoutClientsInput = {
   connect?: Prisma.AdresseWhereUniqueInput
 }
 
-export type AdresseUpdateOneRequiredWithoutClientsNestedInput = {
+export type AdresseUpdateOneWithoutClientsNestedInput = {
   create?: Prisma.XOR<Prisma.AdresseCreateWithoutClientsInput, Prisma.AdresseUncheckedCreateWithoutClientsInput>
   connectOrCreate?: Prisma.AdresseCreateOrConnectWithoutClientsInput
   upsert?: Prisma.AdresseUpsertWithoutClientsInput
+  disconnect?: Prisma.AdresseWhereInput | boolean
+  delete?: Prisma.AdresseWhereInput | boolean
   connect?: Prisma.AdresseWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.AdresseUpdateToOneWithWhereWithoutClientsInput, Prisma.AdresseUpdateWithoutClientsInput>, Prisma.AdresseUncheckedUpdateWithoutClientsInput>
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
+export type AdresseCreateWithoutLocaliteInput = {
+  rue: string
+  numero: string
+  boite: string
+  clients?: Prisma.ClientCreateNestedManyWithoutAdresseInput
+}
+
+export type AdresseUncheckedCreateWithoutLocaliteInput = {
+  id_adresse?: number
+  rue: string
+  numero: string
+  boite: string
+  clients?: Prisma.ClientUncheckedCreateNestedManyWithoutAdresseInput
+}
+
+export type AdresseCreateOrConnectWithoutLocaliteInput = {
+  where: Prisma.AdresseWhereUniqueInput
+  create: Prisma.XOR<Prisma.AdresseCreateWithoutLocaliteInput, Prisma.AdresseUncheckedCreateWithoutLocaliteInput>
+}
+
+export type AdresseCreateManyLocaliteInputEnvelope = {
+  data: Prisma.AdresseCreateManyLocaliteInput | Prisma.AdresseCreateManyLocaliteInput[]
+}
+
+export type AdresseUpsertWithWhereUniqueWithoutLocaliteInput = {
+  where: Prisma.AdresseWhereUniqueInput
+  update: Prisma.XOR<Prisma.AdresseUpdateWithoutLocaliteInput, Prisma.AdresseUncheckedUpdateWithoutLocaliteInput>
+  create: Prisma.XOR<Prisma.AdresseCreateWithoutLocaliteInput, Prisma.AdresseUncheckedCreateWithoutLocaliteInput>
+}
+
+export type AdresseUpdateWithWhereUniqueWithoutLocaliteInput = {
+  where: Prisma.AdresseWhereUniqueInput
+  data: Prisma.XOR<Prisma.AdresseUpdateWithoutLocaliteInput, Prisma.AdresseUncheckedUpdateWithoutLocaliteInput>
+}
+
+export type AdresseUpdateManyWithWhereWithoutLocaliteInput = {
+  where: Prisma.AdresseScalarWhereInput
+  data: Prisma.XOR<Prisma.AdresseUpdateManyMutationInput, Prisma.AdresseUncheckedUpdateManyWithoutLocaliteInput>
+}
+
+export type AdresseScalarWhereInput = {
+  AND?: Prisma.AdresseScalarWhereInput | Prisma.AdresseScalarWhereInput[]
+  OR?: Prisma.AdresseScalarWhereInput[]
+  NOT?: Prisma.AdresseScalarWhereInput | Prisma.AdresseScalarWhereInput[]
+  id_adresse?: Prisma.IntFilter<"Adresse"> | number
+  rue?: Prisma.StringFilter<"Adresse"> | string
+  numero?: Prisma.StringFilter<"Adresse"> | string
+  boite?: Prisma.StringFilter<"Adresse"> | string
+  id_localite?: Prisma.IntNullableFilter<"Adresse"> | number | null
 }
 
 export type AdresseCreateWithoutClientsInput = {
   rue: string
   numero: string
-  boite?: string | null
-  codePostal: string
-  ville: string
-  province: string
+  boite: string
+  localite?: Prisma.LocaliteCreateNestedOneWithoutAdressesInput
 }
 
 export type AdresseUncheckedCreateWithoutClientsInput = {
-  id?: number
+  id_adresse?: number
   rue: string
   numero: string
-  boite?: string | null
-  codePostal: string
-  ville: string
-  province: string
+  boite: string
+  id_localite?: number | null
 }
 
 export type AdresseCreateOrConnectWithoutClientsInput = {
@@ -458,20 +531,45 @@ export type AdresseUpdateToOneWithWhereWithoutClientsInput = {
 export type AdresseUpdateWithoutClientsInput = {
   rue?: Prisma.StringFieldUpdateOperationsInput | string
   numero?: Prisma.StringFieldUpdateOperationsInput | string
-  boite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  codePostal?: Prisma.StringFieldUpdateOperationsInput | string
-  ville?: Prisma.StringFieldUpdateOperationsInput | string
-  province?: Prisma.StringFieldUpdateOperationsInput | string
+  boite?: Prisma.StringFieldUpdateOperationsInput | string
+  localite?: Prisma.LocaliteUpdateOneWithoutAdressesNestedInput
 }
 
 export type AdresseUncheckedUpdateWithoutClientsInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id_adresse?: Prisma.IntFieldUpdateOperationsInput | number
   rue?: Prisma.StringFieldUpdateOperationsInput | string
   numero?: Prisma.StringFieldUpdateOperationsInput | string
-  boite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  codePostal?: Prisma.StringFieldUpdateOperationsInput | string
-  ville?: Prisma.StringFieldUpdateOperationsInput | string
-  province?: Prisma.StringFieldUpdateOperationsInput | string
+  boite?: Prisma.StringFieldUpdateOperationsInput | string
+  id_localite?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+}
+
+export type AdresseCreateManyLocaliteInput = {
+  id_adresse?: number
+  rue: string
+  numero: string
+  boite: string
+}
+
+export type AdresseUpdateWithoutLocaliteInput = {
+  rue?: Prisma.StringFieldUpdateOperationsInput | string
+  numero?: Prisma.StringFieldUpdateOperationsInput | string
+  boite?: Prisma.StringFieldUpdateOperationsInput | string
+  clients?: Prisma.ClientUpdateManyWithoutAdresseNestedInput
+}
+
+export type AdresseUncheckedUpdateWithoutLocaliteInput = {
+  id_adresse?: Prisma.IntFieldUpdateOperationsInput | number
+  rue?: Prisma.StringFieldUpdateOperationsInput | string
+  numero?: Prisma.StringFieldUpdateOperationsInput | string
+  boite?: Prisma.StringFieldUpdateOperationsInput | string
+  clients?: Prisma.ClientUncheckedUpdateManyWithoutAdresseNestedInput
+}
+
+export type AdresseUncheckedUpdateManyWithoutLocaliteInput = {
+  id_adresse?: Prisma.IntFieldUpdateOperationsInput | number
+  rue?: Prisma.StringFieldUpdateOperationsInput | string
+  numero?: Prisma.StringFieldUpdateOperationsInput | string
+  boite?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -506,68 +604,67 @@ export type AdresseCountOutputTypeCountClientsArgs<ExtArgs extends runtime.Types
 
 
 export type AdresseSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
+  id_adresse?: boolean
   rue?: boolean
   numero?: boolean
   boite?: boolean
-  codePostal?: boolean
-  ville?: boolean
-  province?: boolean
+  id_localite?: boolean
+  localite?: boolean | Prisma.Adresse$localiteArgs<ExtArgs>
   clients?: boolean | Prisma.Adresse$clientsArgs<ExtArgs>
   _count?: boolean | Prisma.AdresseCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["adresse"]>
 
 export type AdresseSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
+  id_adresse?: boolean
   rue?: boolean
   numero?: boolean
   boite?: boolean
-  codePostal?: boolean
-  ville?: boolean
-  province?: boolean
+  id_localite?: boolean
+  localite?: boolean | Prisma.Adresse$localiteArgs<ExtArgs>
 }, ExtArgs["result"]["adresse"]>
 
 export type AdresseSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id?: boolean
+  id_adresse?: boolean
   rue?: boolean
   numero?: boolean
   boite?: boolean
-  codePostal?: boolean
-  ville?: boolean
-  province?: boolean
+  id_localite?: boolean
+  localite?: boolean | Prisma.Adresse$localiteArgs<ExtArgs>
 }, ExtArgs["result"]["adresse"]>
 
 export type AdresseSelectScalar = {
-  id?: boolean
+  id_adresse?: boolean
   rue?: boolean
   numero?: boolean
   boite?: boolean
-  codePostal?: boolean
-  ville?: boolean
-  province?: boolean
+  id_localite?: boolean
 }
 
-export type AdresseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "rue" | "numero" | "boite" | "codePostal" | "ville" | "province", ExtArgs["result"]["adresse"]>
+export type AdresseOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_adresse" | "rue" | "numero" | "boite" | "id_localite", ExtArgs["result"]["adresse"]>
 export type AdresseInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  localite?: boolean | Prisma.Adresse$localiteArgs<ExtArgs>
   clients?: boolean | Prisma.Adresse$clientsArgs<ExtArgs>
   _count?: boolean | Prisma.AdresseCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type AdresseIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type AdresseIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type AdresseIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  localite?: boolean | Prisma.Adresse$localiteArgs<ExtArgs>
+}
+export type AdresseIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  localite?: boolean | Prisma.Adresse$localiteArgs<ExtArgs>
+}
 
 export type $AdressePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Adresse"
   objects: {
+    localite: Prisma.$LocalitePayload<ExtArgs> | null
     clients: Prisma.$ClientPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
+    id_adresse: number
     rue: string
     numero: string
-    boite: string | null
-    codePostal: string
-    ville: string
-    province: string
+    boite: string
+    id_localite: number | null
   }, ExtArgs["result"]["adresse"]>
   composites: {}
 }
@@ -651,8 +748,8 @@ export interface AdresseDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    * // Get first 10 Adresses
    * const adresses = await prisma.adresse.findMany({ take: 10 })
    * 
-   * // Only select the `id`
-   * const adresseWithIdOnly = await prisma.adresse.findMany({ select: { id: true } })
+   * // Only select the `id_adresse`
+   * const adresseWithId_adresseOnly = await prisma.adresse.findMany({ select: { id_adresse: true } })
    * 
    */
   findMany<T extends AdresseFindManyArgs>(args?: Prisma.SelectSubset<T, AdresseFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdressePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -696,9 +793,9 @@ export interface AdresseDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   ]
    * })
    * 
-   * // Create many Adresses and only return the `id`
-   * const adresseWithIdOnly = await prisma.adresse.createManyAndReturn({
-   *   select: { id: true },
+   * // Create many Adresses and only return the `id_adresse`
+   * const adresseWithId_adresseOnly = await prisma.adresse.createManyAndReturn({
+   *   select: { id_adresse: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -787,9 +884,9 @@ export interface AdresseDelegate<ExtArgs extends runtime.Types.Extensions.Intern
    *   ]
    * })
    * 
-   * // Update zero or more Adresses and only return the `id`
-   * const adresseWithIdOnly = await prisma.adresse.updateManyAndReturn({
-   *   select: { id: true },
+   * // Update zero or more Adresses and only return the `id_adresse`
+   * const adresseWithId_adresseOnly = await prisma.adresse.updateManyAndReturn({
+   *   select: { id_adresse: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -962,6 +1059,7 @@ readonly fields: AdresseFieldRefs;
  */
 export interface Prisma__AdresseClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  localite<T extends Prisma.Adresse$localiteArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Adresse$localiteArgs<ExtArgs>>): Prisma.Prisma__LocaliteClient<runtime.Types.Result.GetResult<Prisma.$LocalitePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   clients<T extends Prisma.Adresse$clientsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Adresse$clientsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -992,13 +1090,11 @@ export interface Prisma__AdresseClient<T, Null = never, ExtArgs extends runtime.
  * Fields of the Adresse model
  */
 export interface AdresseFieldRefs {
-  readonly id: Prisma.FieldRef<"Adresse", 'Int'>
+  readonly id_adresse: Prisma.FieldRef<"Adresse", 'Int'>
   readonly rue: Prisma.FieldRef<"Adresse", 'String'>
   readonly numero: Prisma.FieldRef<"Adresse", 'String'>
   readonly boite: Prisma.FieldRef<"Adresse", 'String'>
-  readonly codePostal: Prisma.FieldRef<"Adresse", 'String'>
-  readonly ville: Prisma.FieldRef<"Adresse", 'String'>
-  readonly province: Prisma.FieldRef<"Adresse", 'String'>
+  readonly id_localite: Prisma.FieldRef<"Adresse", 'Int'>
 }
     
 
@@ -1251,6 +1347,10 @@ export type AdresseCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many Adresses.
    */
   data: Prisma.AdresseCreateManyInput | Prisma.AdresseCreateManyInput[]
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdresseIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1321,6 +1421,10 @@ export type AdresseUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many Adresses to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AdresseIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1387,6 +1491,25 @@ export type AdresseDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Adresses to delete.
    */
   limit?: number
+}
+
+/**
+ * Adresse.localite
+ */
+export type Adresse$localiteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Localite
+   */
+  select?: Prisma.LocaliteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Localite
+   */
+  omit?: Prisma.LocaliteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LocaliteInclude<ExtArgs> | null
+  where?: Prisma.LocaliteWhereInput
 }
 
 /**

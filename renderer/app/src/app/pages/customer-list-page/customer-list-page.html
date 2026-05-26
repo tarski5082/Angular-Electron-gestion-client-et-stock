@@ -1,0 +1,10 @@
+<div class="card">
+    <h2>Liste des clients</h2>
+    
+        
+        @for(client of customers();track client){
+            <app-customer-list-item [customer]="client" [id]="1">
+                
+            </app-customer-list-item>
+        }
+</div>

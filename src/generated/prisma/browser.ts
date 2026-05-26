@@ -18,12 +18,42 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model Client
+ * Model Localite
  * 
  */
-export type Client = Prisma.ClientModel
+export type Localite = Prisma.LocaliteModel
 /**
  * Model Adresse
  * 
  */
 export type Adresse = Prisma.AdresseModel
+/**
+ * Model Client
+ * 
+ */
+export type Client = Prisma.ClientModel
+/**
+ * Model Categorie
+ * 
+ */
+export type Categorie = Prisma.CategorieModel
+/**
+ * Model Sous_categorie
+ * 
+ */
+export type Sous_categorie = Prisma.Sous_categorieModel
+/**
+ * Model ProduitStock
+ * 
+ */
+export type ProduitStock = Prisma.ProduitStockModel
+/**
+ * Model ProduitCommande
+ * 
+ */
+export type ProduitCommande = Prisma.ProduitCommandeModel
+/**
+ * Model Facture
+ * 
+ */
+export type Facture = Prisma.FactureModel

@@ -1,4 +1,10 @@
 
 
-<app-profile-form></app-profile-form>
-<router-outlet />
+
+<router-outlet>
+    <nav>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Accueil</a>
+    <a routerLink="/addProfile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Client</a>
+    </nav>
+
+</router-outlet>

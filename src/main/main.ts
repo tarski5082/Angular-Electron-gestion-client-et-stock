@@ -3,9 +3,12 @@ import path from 'node:path';
 import started from 'electron-squirrel-startup';
 
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
-import { PrismaClient } from '../generated/prisma/client';
+import { PrismaClient,Client } from '../generated/prisma/client';
+import { _Client } from '../data/client';
 import { CustomerProfile } from '../data/customer';
-import {createCustomer} from '../data/customer';
+import {createCustomer,loadCustomer} from '../data/customer';
+import { deleteClientById, getClientById,addClient} from '../data/client';
+import { updateClient } from '../data/client';
 const dbPath = path.join(__dirname, '..', '..', 'dev.db');
 const adapter = new PrismaBetterSqlite3({ url: 'file:' + dbPath });
 
@@ -15,9 +18,27 @@ if (started) {
   app.quit();
 }
 
-ipcMain.handle('cust:add-customer',async(_event,customer:CustomerProfile)=>{
+ipcMain.handle('customer:add-customer',async(_event,customer:CustomerProfile)=>{
   createCustomer(customer);
 });
+
+ipcMain.handle('customer:load-customer',async(event) =>loadCustomer());
+
+
+//client CRUD
+ipcMain.handle("client:add", async (_event, data) => addClient(data));
+
+// Delete Client
+ipcMain.handle("client:deleteById", async (_event, id: number) => deleteClientById(id));
+
+// Get Client By ID
+ipcMain.handle("client:getById", async (_event, id: number) => getClientById(id));
+
+// Update Client
+ipcMain.handle("client:update",
+async (_event,id_client: number,client:_Client ) => updateClient(id_client,client));
+
+
 
 
 function createWindow(): void {
