@@ -9,6 +9,7 @@ export interface _Localite{
 export async function addLocalite(data:_Localite){
     try{
         const newLocalite = await prisma.localite.create({data});
+        return newLocalite;
     }catch(error){
         console.error("Error inserting localite:", error);
         throw error;

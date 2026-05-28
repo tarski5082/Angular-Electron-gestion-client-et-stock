@@ -1,70 +1,88 @@
-<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
-
-  <div class="row">
-    <div class="field">
-      <label for="prenom">Prénom</label>
-      <input type="text" id="prenom" formControlName="prenom" placeholder="Jean">
-    </div>
-
-    <div class="field">
-      <label for="nom">Nom</label>
-      <input type="text" id="nom" formControlName="nom" placeholder="Dupont">
-    </div>
-  </div>
-
-  <!-- We wrap the address fields inside the address FormGroup -->
-  <div formGroupName="adresse">
+<div class="form-container">
+  <h2>Inscription Client</h2>
+  
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
     
-    <div class="row">
-      <div class="field" style="flex: 3;">
-        <label for="rue">Rue</label>
-        <input type="text" id="rue" formControlName="rue" placeholder="Rue de Bruxelles">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="prenom">Prénom <span class="required">*</span></label>
+        <input id="prenom" type="text" formControlName="prenom" placeholder="Ex: Jean">
+        
+        @if (customerForm.get('prenom')?.touched && customerForm.get('prenom')?.invalid) {
+          <div class="error">Le prénom est requis.</div>
+        }
       </div>
 
-      <div class="field">
-        <label for="numero">N°</label>
-        <input type="text" id="numero" formControlName="numero" placeholder="12">
-      </div>
-
-      <div class="field">
-        <label for="boite">Boîte</label>
-        <input type="text" id="boite" formControlName="boite" placeholder="A">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="field">
-        <label for="code_postal">Code postal</label>
-        <input type="text" id="cp" formControlName="cp" placeholder="6000">
-      </div>
-
-      <div class="field" style="flex: 2;">
-        <label for="ville">Ville</label>
-        <input type="text" id="ville" formControlName="ville" placeholder="Charleroi">
+      <div class="form-group">
+        <label for="nom">Nom <span class="required">*</span></label>
+        <input id="nom" type="text" formControlName="nom" placeholder="Ex: Dupont">
+        
+        @if (customerForm.get('nom')?.touched && customerForm.get('nom')?.invalid) {
+          <div class="error">Le nom est requis.</div>
+        }
       </div>
     </div>
-
-    <div class="field">
-      <label for="province">Province</label>
-      <select id="province" formControlName="province">
-        <option value="Bruxelles-Capitale">Bruxelles-Capitale</option>
-        <option value="Hainaut">Hainaut</option>
-        <option value="Liège">Liège</option>
-        <option value="Namur">Namur</option>
-        <option value="Luxembourg">Luxembourg</option>
-        <option value="Brabant wallon">Brabant wallon</option>
-        <option value="Anvers">Anvers</option>
-        <option value="Flandre orientale">Flandre orientale</option>
-        <option value="Flandre occidentale">Flandre occidentale</option>
-        <option value="Limbourg">Limbourg</option>
-        <option value="Brabant flamand">Brabant flamand</option>
-      </select>
+    <div class="form-row">
+      <label for="email">Email<span class="required">*</span></label>
+      <input id="email" type="text" formControlName="email" placeholder="Ex:test@test.be">
+      @if(customerForm.get('email')?.touched && customerForm.get('email')?.invalid){
+        <div class="error">Le nom est requis.</div>
+      }
     </div>
+    <fieldset formGroupName="adresse">
+      <legend>Adresse</legend>
 
+      <div class="form-row grid-address">
+        <div class="form-group">
+          <label for="rue">Rue <span class="required">*</span></label>
+          <input id="rue" type="text" formControlName="rue" placeholder="Rue de la Station">
+        </div>
+        
+        <div class="form-group">
+          <label for="numero">N° <span class="required">*</span></label>
+          <input id="numero" type="text" formControlName="numero" placeholder="42">
+        </div>
 
-  </div>
+        <div class="form-group">
+          <label for="boite">Boîte</label>
+          <input id="boite" type="text" formControlName="boite" placeholder="B">
+        </div>
+      </div>
 
-  <!-- Optional: Disable button if the form is completely untouched/invalid -->
-  <button type="submit" [disabled]="customerForm.invalid">Ajouter</button>
+      <div formGroupName="localite" class="form-row grid-localite">
+        <div class="form-group">
+          <label for="code_postal">Code Postal <span class="required">*</span></label>
+          <input id="code_postal" type="text" formControlName="code_postal" placeholder="6000">
+          
+          @if (customerForm.get('adresse.localite.code_postal')?.touched && customerForm.get('adresse.localite.code_postal')?.invalid) {
+            <div class="error">4 chiffres requis.</div>
+          }
+        </div>
 
-</form>
+        <div class="form-group">
+          <label for="localite-ville">Localité <span class="required">*</span></label>
+          <input id="localite-ville" type="text" formControlName="localite" placeholder="Charleroi">
+        </div>
+
+        <div class="form-group">
+          <label for="province">Province <span class="required">*</span></label>
+          <select id="province" formControlName="province">
+            <option value="Hainaut">Hainaut</option>
+            <option value="Liège">Liège</option>
+            <option value="Namur">Namur</option>
+            <option value="Brabant Wallon">Brabant Wallon</option>
+            <option value="Luxembourg">Luxembourg</option>
+            <option value="Anvers">Anvers</option>
+            <option value="Flandre-Orientale">Flandre Orientale</option>
+            <option value="Flandre-Occidentale">Flandre Occidentale</option>
+            <option value="Limbourg">Limbourg</option>
+            <option value="Brabant Flamand">Brabant Flamand</option>
+            <option value="Bruxelles">Bruxelles-Capitale</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <button type="submit" [disabled]="customerForm.invalid">Enregistrer le client</button>
+  </form>
+</div>

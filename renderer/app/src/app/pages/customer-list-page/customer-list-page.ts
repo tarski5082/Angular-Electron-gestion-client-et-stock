@@ -1,6 +1,6 @@
 import { Component, OnInit,signal,inject } from '@angular/core';
 import { CustomerListItem } from '../../component/customer-list-item/customer-list-item';
-import { CustomerProfile } from '../../../types/electron';
+import { CustomerProfile } from '../../../types/customer-profil'; 
 import { CustomerService } from '../../services/customer-service';
 import { Inject } from '@angular/core';
 @Component({

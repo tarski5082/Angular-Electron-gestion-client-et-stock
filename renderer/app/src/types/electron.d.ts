@@ -1,11 +1,6 @@
 import { Client } from "./client";
 
-export interface CustomerProfile {
-id_client:number;
-  prenom: string;
-  nom: string;
-  adresse: Adresse|null;
-}
+import { CustomerProfile } from "./customer-profil";
 
 export interface ElectronApi{
     addCustomer:(CustomerProfile)=> Promise<any>;

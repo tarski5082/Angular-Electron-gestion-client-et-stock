@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { CustomerProfile } from '../../../types/electron';
-import { Client } from '../../../types/client';
+import { CustomerProfile } from '../../../types/customer-profil';
+
 @Component({
   selector: 'app-customer-list-item',
   imports: [],
@@ -9,8 +9,10 @@ import { Client } from '../../../types/client';
 })
 export class CustomerListItem {
  customer=input.required<CustomerProfile>();
-  
  delete(){
-    window.api.deleteClientById(this.customer().id_client);   
+    const clientId = this.customer().id_client;
+    if(clientId!=undefined && clientId!=null){
+      window.api.deleteClientById(clientId);
+    }
  }
 }

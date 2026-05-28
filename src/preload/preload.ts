@@ -1,7 +1,7 @@
 // See the Electron documentation for details on how to use preload scripts:
 
 import { contextBridge, ipcRenderer } from 'electron';
-import { CustomerProfile } from 'renderer/app/src/types/electron';
+import { CustomerProfile } from 'src/data/customer'; 
 import { addClient, deleteClientById, getClientById, updateClient } from 'src/data/client';
 import { loadCustomer } from 'src/data/customer';
 import { Client } from 'src/generated/prisma/client';
