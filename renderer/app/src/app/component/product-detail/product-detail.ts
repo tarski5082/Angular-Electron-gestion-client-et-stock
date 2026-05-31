@@ -23,9 +23,15 @@ export class ProductDetail {
     if(this.commandeForm.valid){
       const {quantite} = this.commandeForm.getRawValue();
       const value:Commande = this.commande();
+      const id_produit = Number(this.id_produit());
+      const id_facture = Number(this.id_facture());
+      if (isNaN(id_produit) || isNaN(id_facture) || this.id_produit() === undefined || this.id_facture() === undefined) {
+        console.error("Route parameters are missing!");
+        return;
+      }
       this.take.takeCommande({
-        id_produit:value.id_produit,
-        id_facture:value.id_facture,
+        id_produit:Number(id_produit),
+        id_facture:Number(id_facture),
         quantite:quantite ?? 0
       });
     }

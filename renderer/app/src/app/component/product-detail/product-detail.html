@@ -1,1 +1,18 @@
+<div class="form-container">
+  <h2>Passer une commande</h2>
 
+  <form [formGroup]="commandeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="quantite">Quantité :</label>
+      <input 
+        id="quantite" 
+        type="number" 
+        formControlName="quantite" 
+        class="form-control"/>
+    </div>
+
+    <button type="submit" [disabled]="commandeForm.invalid" class="btn-submit">
+      Commander
+    </button>
+  </form>
+</div>
