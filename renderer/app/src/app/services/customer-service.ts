@@ -13,4 +13,11 @@ export class CustomerService {
       return this.electron.getApi().loadCustomer();
     }
 
+    getCustomer(id:number):Promise<CustomerProfile>{
+      return this.electron.getApi().getCustomer(id);
+    }
+    updateCustomer(id:number,customer:CustomerProfile){
+      return this.electron.getApi().updateCustomer(id,customer);
+    }
+
 }

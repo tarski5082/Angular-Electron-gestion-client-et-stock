@@ -1,0 +1,28 @@
+<div class="form-container">
+    <h2>Ajouter Produit</h2>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+        <label for="urlImage">URL</label>
+        <input id="urlImage" type="text" formControlName="urlImage">
+        @if (productForm.get('urlImage')?.touched && productForm.get('urlImage')?.invalid) {
+          <div class="error">L'URL' est requis.</div>
+        }
+
+        <label for="intitule_produit">Intitulé</label>
+        <input id="intitule_produit" type="text" formControlName="intitule_produit">
+         @if (productForm.get('intitule_produit')?.touched && productForm.get('intitule_produit')?.invalid) {
+          <div class="error">Un nom est requis pour le produit.</div>
+        }
+
+        <label for="quantite">Quantité</label>
+        <input id="quantite" type="number" formControlName="quantite">
+        @if (productForm.get('quantite')?.touched && productForm.get('quantite')?.invalid) {
+          <div class="error">Veuillez saisir une quantité.</div>
+        }
+
+        <label for="prix_unitaire">Prix</label>
+        <input id="prix_unitaire" type="number" formControlName="prix_unitaire">
+        <button type="submit" [disabled]="productForm.invalid">Ajouter produit</button>
+    </form>
+
+</div>

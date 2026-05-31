@@ -221,6 +221,7 @@ export type LocaliteOrderByWithRelationInput = {
 
 export type LocaliteWhereUniqueInput = Prisma.AtLeast<{
   id_localite?: number
+  code_postale_province_localite?: Prisma.LocaliteCode_postaleProvinceLocaliteCompoundUniqueInput
   AND?: Prisma.LocaliteWhereInput | Prisma.LocaliteWhereInput[]
   OR?: Prisma.LocaliteWhereInput[]
   NOT?: Prisma.LocaliteWhereInput | Prisma.LocaliteWhereInput[]
@@ -228,7 +229,7 @@ export type LocaliteWhereUniqueInput = Prisma.AtLeast<{
   province?: Prisma.StringNullableFilter<"Localite"> | string | null
   localite?: Prisma.StringNullableFilter<"Localite"> | string | null
   adresses?: Prisma.AdresseListRelationFilter
-}, "id_localite">
+}, "id_localite" | "code_postale_province_localite">
 
 export type LocaliteOrderByWithAggregationInput = {
   id_localite?: Prisma.SortOrder
@@ -300,6 +301,12 @@ export type LocaliteUncheckedUpdateManyInput = {
   code_postale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   province?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   localite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type LocaliteCode_postaleProvinceLocaliteCompoundUniqueInput = {
+  code_postale: string
+  province: string
+  localite: string
 }
 
 export type LocaliteCountOrderByAggregateInput = {

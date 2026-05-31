@@ -1,30 +1,61 @@
 import { app, BrowserWindow,ipcMain} from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
-
-import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
-import { PrismaClient,Client } from '../generated/prisma/client';
+import { loadProduct,Stock,addStock, updateStock,getStockById } from '../data/stock';
 import { _Client } from '../data/client';
-import { CustomerProfile,test } from '../data/customer';
-import {createCustomer,loadCustomer,runExample} from '../data/customer';
+import { CustomerProfile,getCustomerProfile} from '../data/customer';
+import {createCustomer,loadCustomer,updateCustomer} from '../data/customer';
 import { deleteClientById, getClientById,addClient} from '../data/client';
 import { updateClient } from '../data/client';
-const dbPath = path.join(__dirname, '..', '..', 'dev.db');
-const adapter = new PrismaBetterSqlite3({ url: 'file:' + dbPath });
+import { addLocalite,_Localite } from '../data/localite';
+import { createAdress,_Adresse } from '../data/adresse';
+import { createFacture,finishFacture,factureClientId } from '../data/facture';
+import { takeCommande,Commande } from '../data/commande';
 
-const prisma = new PrismaClient({adapter});
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
   app.quit();
 }
+//Commande
+ipcMain.handle('commande:take',async(event,command:Commande)=>takeCommande(command));
+
+
+
+
+//Facture
+ipcMain.handle('facture:create',async(event,id_client)=>createFacture(id_client));
+
+ipcMain.handle('facture:finish',async(event,id_facture)=>{
+  const fact = finishFacture(id_facture);
+});
+ipcMain.handle('facture:get-client',async (event,id_facture) =>factureClientId(id_facture));
+
+//Produit
+ipcMain.handle('product:add',async(event,product:Stock)=>{
+  const prod = addStock(product)
+});
+
+ipcMain.handle('product:update',async(event,id_produit:number,quantite:number)=>{
+  const update = await updateStock(id_produit,quantite);
+});
+ipcMain.handle('product:get',async (event,id_produit:number)=>getStockById(id_produit));
+
+//Customer
 
 ipcMain.handle('customer:add-customer',async(_event,customer:CustomerProfile)=>{
   createCustomer(customer);
 });
+ipcMain.handle('customer:update',async(event,id:number,customer:CustomerProfile)=>updateCustomer(id,customer));
+
+
 
 ipcMain.handle('customer:load-customer',async(event) =>loadCustomer());
 
+ipcMain.handle('product:loading',async(event)=>loadProduct());
 
+
+
+ipcMain.handle('customer:get',async(event,id:number)=>getCustomerProfile(id));
 //client CRUD
 ipcMain.handle("client:add", async (_event, data) => addClient(data));
 
@@ -38,16 +69,15 @@ ipcMain.handle("client:getById", async (_event, id: number) => getClientById(id)
 ipcMain.handle("client:update",
 async (_event,id_client: number,client:_Client ) => updateClient(id_client,client));
 
-
+ipcMain.handle("localite:add",async (_event,localite:_Localite)=> addLocalite(localite));
+ipcMain.handle("adresse:add",async (_event,localite:_Adresse)=> createAdress(localite));
 
 
 function createWindow(): void {
   const win = new BrowserWindow({
-    width: 500,
-    height: 450,
+    width: 1000,
+    height: 700,
     webPreferences: {
-      // Electron Forge + Vite automatically bundles the preload script. 
-      // It exposes a global constant pointing to its built path.
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,

@@ -1,10 +1,7 @@
+<div class="layout">
+    <app-navcomponent></app-navcomponent>
 
-
-
-<router-outlet>
-    <nav>
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Accueil</a>
-    <a routerLink="/addProfile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Client</a>
-    </nav>
-
-</router-outlet>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

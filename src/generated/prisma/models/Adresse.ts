@@ -236,6 +236,7 @@ export type AdresseOrderByWithRelationInput = {
 
 export type AdresseWhereUniqueInput = Prisma.AtLeast<{
   id_adresse?: number
+  rue_numero_boite_id_adresse?: Prisma.AdresseRueNumeroBoiteId_adresseCompoundUniqueInput
   AND?: Prisma.AdresseWhereInput | Prisma.AdresseWhereInput[]
   OR?: Prisma.AdresseWhereInput[]
   NOT?: Prisma.AdresseWhereInput | Prisma.AdresseWhereInput[]
@@ -245,7 +246,7 @@ export type AdresseWhereUniqueInput = Prisma.AtLeast<{
   id_localite?: Prisma.IntNullableFilter<"Adresse"> | number | null
   localite?: Prisma.XOR<Prisma.LocaliteNullableScalarRelationFilter, Prisma.LocaliteWhereInput> | null
   clients?: Prisma.ClientListRelationFilter
-}, "id_adresse">
+}, "id_adresse" | "rue_numero_boite_id_adresse">
 
 export type AdresseOrderByWithAggregationInput = {
   id_adresse?: Prisma.SortOrder
@@ -335,6 +336,13 @@ export type AdresseListRelationFilter = {
 
 export type AdresseOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type AdresseRueNumeroBoiteId_adresseCompoundUniqueInput = {
+  rue: string
+  numero: string
+  boite: string
+  id_adresse: number
 }
 
 export type AdresseCountOrderByAggregateInput = {

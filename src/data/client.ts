@@ -2,10 +2,11 @@ import{prisma} from './dbconnect';
 
 
 export interface _Client{
+    id_client?:number;
     nom:string;
     prenom:string;
     email?:string;
-    id_adress?:number;
+    id_adresse?:number;
 }
 
 
@@ -13,7 +14,7 @@ export interface _Client{
 export async function addClient(data:_Client) {
     try{
         const newClient = await prisma.client.create({data})
-
+        return newClient;
     }catch(error){
         console.error("Error inserting client:", error);
         throw error;

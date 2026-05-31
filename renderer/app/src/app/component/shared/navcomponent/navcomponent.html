@@ -1,0 +1,39 @@
+<nav class="accordion-nav">
+  <ul class="nav-list">
+    @for (item of navItems; track item.label) {
+      <li class="nav-item">
+
+        @if (!item.children) {
+          <a [routerLink]="item.link" 
+             routerLinkActive="active" 
+             [routerLinkActiveOptions]="{ exact: true }"
+             class="nav-link">
+             {{ item.label }}
+          </a>
+        } 
+
+        @else {
+          <button (click)="item.open = !item.open" 
+                  class="nav-link accordion-toggle"
+                  [class.is-open]="item.open">
+            {{ item.label }}
+            <span class="arrow" [class.rotated]="item.open">▼</span>
+          </button>
+
+          <ul class="submenu" [class.show]="item.open">
+            @for (child of item.children; track child.label) {
+              <li>
+                <a [routerLink]="child.link" 
+                   routerLinkActive="active" 
+                   class="submenu-link">
+                   {{ child.label }}
+                </a>
+              </li>
+            }
+          </ul>
+        }
+
+      </li>
+    }
+  </ul>
+</nav>

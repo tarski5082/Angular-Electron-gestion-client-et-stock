@@ -234,17 +234,16 @@ export type ProduitCommandeOrderByWithRelationInput = {
 }
 
 export type ProduitCommandeWhereUniqueInput = Prisma.AtLeast<{
-  id_commande_id_produit?: Prisma.ProduitCommandeId_commandeId_produitCompoundUniqueInput
+  id_commande?: number
   AND?: Prisma.ProduitCommandeWhereInput | Prisma.ProduitCommandeWhereInput[]
   OR?: Prisma.ProduitCommandeWhereInput[]
   NOT?: Prisma.ProduitCommandeWhereInput | Prisma.ProduitCommandeWhereInput[]
-  id_commande?: Prisma.IntFilter<"ProduitCommande"> | number
   id_produit?: Prisma.IntFilter<"ProduitCommande"> | number
   id_facture?: Prisma.IntFilter<"ProduitCommande"> | number
   quantite?: Prisma.IntNullableFilter<"ProduitCommande"> | number | null
   produit?: Prisma.XOR<Prisma.ProduitStockScalarRelationFilter, Prisma.ProduitStockWhereInput>
   facture?: Prisma.XOR<Prisma.FactureScalarRelationFilter, Prisma.FactureWhereInput>
-}, "id_commande_id_produit">
+}, "id_commande">
 
 export type ProduitCommandeOrderByWithAggregationInput = {
   id_commande?: Prisma.SortOrder
@@ -269,21 +268,19 @@ export type ProduitCommandeScalarWhereWithAggregatesInput = {
 }
 
 export type ProduitCommandeCreateInput = {
-  id_commande: number
   quantite?: number | null
   produit: Prisma.ProduitStockCreateNestedOneWithoutProduitCommandesInput
   facture: Prisma.FactureCreateNestedOneWithoutProduitsInput
 }
 
 export type ProduitCommandeUncheckedCreateInput = {
-  id_commande: number
+  id_commande?: number
   id_produit: number
   id_facture: number
   quantite?: number | null
 }
 
 export type ProduitCommandeUpdateInput = {
-  id_commande?: Prisma.IntFieldUpdateOperationsInput | number
   quantite?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   produit?: Prisma.ProduitStockUpdateOneRequiredWithoutProduitCommandesNestedInput
   facture?: Prisma.FactureUpdateOneRequiredWithoutProduitsNestedInput
@@ -297,14 +294,13 @@ export type ProduitCommandeUncheckedUpdateInput = {
 }
 
 export type ProduitCommandeCreateManyInput = {
-  id_commande: number
+  id_commande?: number
   id_produit: number
   id_facture: number
   quantite?: number | null
 }
 
 export type ProduitCommandeUpdateManyMutationInput = {
-  id_commande?: Prisma.IntFieldUpdateOperationsInput | number
   quantite?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
@@ -323,11 +319,6 @@ export type ProduitCommandeListRelationFilter = {
 
 export type ProduitCommandeOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type ProduitCommandeId_commandeId_produitCompoundUniqueInput = {
-  id_commande: number
-  id_produit: number
 }
 
 export type ProduitCommandeCountOrderByAggregateInput = {
@@ -450,13 +441,12 @@ export type ProduitCommandeUncheckedUpdateManyWithoutFactureNestedInput = {
 }
 
 export type ProduitCommandeCreateWithoutProduitInput = {
-  id_commande: number
   quantite?: number | null
   facture: Prisma.FactureCreateNestedOneWithoutProduitsInput
 }
 
 export type ProduitCommandeUncheckedCreateWithoutProduitInput = {
-  id_commande: number
+  id_commande?: number
   id_facture: number
   quantite?: number | null
 }
@@ -497,13 +487,12 @@ export type ProduitCommandeScalarWhereInput = {
 }
 
 export type ProduitCommandeCreateWithoutFactureInput = {
-  id_commande: number
   quantite?: number | null
   produit: Prisma.ProduitStockCreateNestedOneWithoutProduitCommandesInput
 }
 
 export type ProduitCommandeUncheckedCreateWithoutFactureInput = {
-  id_commande: number
+  id_commande?: number
   id_produit: number
   quantite?: number | null
 }
@@ -534,13 +523,12 @@ export type ProduitCommandeUpdateManyWithWhereWithoutFactureInput = {
 }
 
 export type ProduitCommandeCreateManyProduitInput = {
-  id_commande: number
+  id_commande?: number
   id_facture: number
   quantite?: number | null
 }
 
 export type ProduitCommandeUpdateWithoutProduitInput = {
-  id_commande?: Prisma.IntFieldUpdateOperationsInput | number
   quantite?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   facture?: Prisma.FactureUpdateOneRequiredWithoutProduitsNestedInput
 }
@@ -558,13 +546,12 @@ export type ProduitCommandeUncheckedUpdateManyWithoutProduitInput = {
 }
 
 export type ProduitCommandeCreateManyFactureInput = {
-  id_commande: number
+  id_commande?: number
   id_produit: number
   quantite?: number | null
 }
 
 export type ProduitCommandeUpdateWithoutFactureInput = {
-  id_commande?: Prisma.IntFieldUpdateOperationsInput | number
   quantite?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   produit?: Prisma.ProduitStockUpdateOneRequiredWithoutProduitCommandesNestedInput
 }

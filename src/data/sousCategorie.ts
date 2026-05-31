@@ -1,11 +1,11 @@
 import {prisma} from './dbconnect';
-
+import { SousCategorie } from 'shared/model';
 export interface _SousCategorie{
     intitule_sous_cat:string;
     id_cat?:number 
 }
 
-export async function addSousCategorie(data:_SousCategorie){
+export async function addSousCategorie(data:SousCategorie){
     try{
         const newCategorie = await prisma.sous_categorie.create({data});
 
@@ -32,7 +32,7 @@ export async function deleteSousCategorie(id_sous_cat:number){
    
 }
 
-export async function updateSousCategorieById(id_sous_cat:number,data:_SousCategorie){
+export async function updateSousCategorieById(id_sous_cat:number,data:SousCategorie){
     try{
         const newCategorie = await prisma.sous_categorie.update({
             where:{

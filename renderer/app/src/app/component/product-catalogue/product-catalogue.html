@@ -1,0 +1,3 @@
+@for(product_ of products();track product_){
+    <app-product-item [product]="product_" (id)="sendId($event)"></app-product-item>
+}

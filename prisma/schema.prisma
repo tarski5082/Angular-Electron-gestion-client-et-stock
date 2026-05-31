@@ -24,6 +24,7 @@ model Localite {
   localite     String?
 
   adresses Adresse[]
+   @@unique([code_postale,province,localite])
 }
 
 model Adresse {
@@ -34,8 +35,8 @@ model Adresse {
 
   id_localite Int?
   localite    Localite? @relation(fields: [id_localite], references: [id_localite])
-
   clients Client[]
+  @@unique([rue, numero, boite,id_adresse])
 }
 
 model Client {
@@ -62,7 +63,7 @@ model Sous_categorie {
   id_sous_cat       Int    @id @default(autoincrement())
   intitule_sous_cat String?
 
-  id_cat    Int?
+  id_cat    Int @default(0)
   categorie Categorie? @relation(fields: [id_cat], references: [id_cat])
 
   produits ProduitStock[]
@@ -80,7 +81,7 @@ model ProduitStock {
 }
 
 model ProduitCommande {
-  id_commande Int
+  id_commande Int @id @default(autoincrement())
   id_produit  Int
   id_facture  Int
   quantite    Int?
@@ -88,7 +89,7 @@ model ProduitCommande {
   produit ProduitStock @relation(fields: [id_produit], references: [id_produit])
   facture Facture      @relation(fields: [id_facture], references: [id_facture],onDelete: Cascade)
 
-  @@id([id_commande, id_produit])
+  
 }
 
 model Facture {

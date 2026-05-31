@@ -174,7 +174,7 @@ export type Sous_categorieGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 export type Sous_categorieGroupByOutputType = {
   id_sous_cat: number
   intitule_sous_cat: string | null
-  id_cat: number | null
+  id_cat: number
   _count: Sous_categorieCountAggregateOutputType | null
   _avg: Sous_categorieAvgAggregateOutputType | null
   _sum: Sous_categorieSumAggregateOutputType | null
@@ -203,7 +203,7 @@ export type Sous_categorieWhereInput = {
   NOT?: Prisma.Sous_categorieWhereInput | Prisma.Sous_categorieWhereInput[]
   id_sous_cat?: Prisma.IntFilter<"Sous_categorie"> | number
   intitule_sous_cat?: Prisma.StringNullableFilter<"Sous_categorie"> | string | null
-  id_cat?: Prisma.IntNullableFilter<"Sous_categorie"> | number | null
+  id_cat?: Prisma.IntFilter<"Sous_categorie"> | number
   categorie?: Prisma.XOR<Prisma.CategorieNullableScalarRelationFilter, Prisma.CategorieWhereInput> | null
   produits?: Prisma.ProduitStockListRelationFilter
 }
@@ -211,7 +211,7 @@ export type Sous_categorieWhereInput = {
 export type Sous_categorieOrderByWithRelationInput = {
   id_sous_cat?: Prisma.SortOrder
   intitule_sous_cat?: Prisma.SortOrderInput | Prisma.SortOrder
-  id_cat?: Prisma.SortOrderInput | Prisma.SortOrder
+  id_cat?: Prisma.SortOrder
   categorie?: Prisma.CategorieOrderByWithRelationInput
   produits?: Prisma.ProduitStockOrderByRelationAggregateInput
 }
@@ -222,7 +222,7 @@ export type Sous_categorieWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.Sous_categorieWhereInput[]
   NOT?: Prisma.Sous_categorieWhereInput | Prisma.Sous_categorieWhereInput[]
   intitule_sous_cat?: Prisma.StringNullableFilter<"Sous_categorie"> | string | null
-  id_cat?: Prisma.IntNullableFilter<"Sous_categorie"> | number | null
+  id_cat?: Prisma.IntFilter<"Sous_categorie"> | number
   categorie?: Prisma.XOR<Prisma.CategorieNullableScalarRelationFilter, Prisma.CategorieWhereInput> | null
   produits?: Prisma.ProduitStockListRelationFilter
 }, "id_sous_cat">
@@ -230,7 +230,7 @@ export type Sous_categorieWhereUniqueInput = Prisma.AtLeast<{
 export type Sous_categorieOrderByWithAggregationInput = {
   id_sous_cat?: Prisma.SortOrder
   intitule_sous_cat?: Prisma.SortOrderInput | Prisma.SortOrder
-  id_cat?: Prisma.SortOrderInput | Prisma.SortOrder
+  id_cat?: Prisma.SortOrder
   _count?: Prisma.Sous_categorieCountOrderByAggregateInput
   _avg?: Prisma.Sous_categorieAvgOrderByAggregateInput
   _max?: Prisma.Sous_categorieMaxOrderByAggregateInput
@@ -244,7 +244,7 @@ export type Sous_categorieScalarWhereWithAggregatesInput = {
   NOT?: Prisma.Sous_categorieScalarWhereWithAggregatesInput | Prisma.Sous_categorieScalarWhereWithAggregatesInput[]
   id_sous_cat?: Prisma.IntWithAggregatesFilter<"Sous_categorie"> | number
   intitule_sous_cat?: Prisma.StringNullableWithAggregatesFilter<"Sous_categorie"> | string | null
-  id_cat?: Prisma.IntNullableWithAggregatesFilter<"Sous_categorie"> | number | null
+  id_cat?: Prisma.IntWithAggregatesFilter<"Sous_categorie"> | number
 }
 
 export type Sous_categorieCreateInput = {
@@ -256,7 +256,7 @@ export type Sous_categorieCreateInput = {
 export type Sous_categorieUncheckedCreateInput = {
   id_sous_cat?: number
   intitule_sous_cat?: string | null
-  id_cat?: number | null
+  id_cat?: number
   produits?: Prisma.ProduitStockUncheckedCreateNestedManyWithoutSous_categorieInput
 }
 
@@ -269,14 +269,14 @@ export type Sous_categorieUpdateInput = {
 export type Sous_categorieUncheckedUpdateInput = {
   id_sous_cat?: Prisma.IntFieldUpdateOperationsInput | number
   intitule_sous_cat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_cat?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id_cat?: Prisma.IntFieldUpdateOperationsInput | number
   produits?: Prisma.ProduitStockUncheckedUpdateManyWithoutSous_categorieNestedInput
 }
 
 export type Sous_categorieCreateManyInput = {
   id_sous_cat?: number
   intitule_sous_cat?: string | null
-  id_cat?: number | null
+  id_cat?: number
 }
 
 export type Sous_categorieUpdateManyMutationInput = {
@@ -286,7 +286,7 @@ export type Sous_categorieUpdateManyMutationInput = {
 export type Sous_categorieUncheckedUpdateManyInput = {
   id_sous_cat?: Prisma.IntFieldUpdateOperationsInput | number
   intitule_sous_cat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_cat?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id_cat?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type Sous_categorieListRelationFilter = {
@@ -432,7 +432,7 @@ export type Sous_categorieScalarWhereInput = {
   NOT?: Prisma.Sous_categorieScalarWhereInput | Prisma.Sous_categorieScalarWhereInput[]
   id_sous_cat?: Prisma.IntFilter<"Sous_categorie"> | number
   intitule_sous_cat?: Prisma.StringNullableFilter<"Sous_categorie"> | string | null
-  id_cat?: Prisma.IntNullableFilter<"Sous_categorie"> | number | null
+  id_cat?: Prisma.IntFilter<"Sous_categorie"> | number
 }
 
 export type Sous_categorieCreateWithoutProduitsInput = {
@@ -443,7 +443,7 @@ export type Sous_categorieCreateWithoutProduitsInput = {
 export type Sous_categorieUncheckedCreateWithoutProduitsInput = {
   id_sous_cat?: number
   intitule_sous_cat?: string | null
-  id_cat?: number | null
+  id_cat?: number
 }
 
 export type Sous_categorieCreateOrConnectWithoutProduitsInput = {
@@ -470,7 +470,7 @@ export type Sous_categorieUpdateWithoutProduitsInput = {
 export type Sous_categorieUncheckedUpdateWithoutProduitsInput = {
   id_sous_cat?: Prisma.IntFieldUpdateOperationsInput | number
   intitule_sous_cat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_cat?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  id_cat?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type Sous_categorieCreateManyCategorieInput = {
@@ -576,7 +576,7 @@ export type $Sous_categoriePayload<ExtArgs extends runtime.Types.Extensions.Inte
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id_sous_cat: number
     intitule_sous_cat: string | null
-    id_cat: number | null
+    id_cat: number
   }, ExtArgs["result"]["sous_categorie"]>
   composites: {}
 }

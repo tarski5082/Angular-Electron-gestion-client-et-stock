@@ -9,7 +9,7 @@ export interface CustomerProfile {
     numero:string;
     boite?:string;
     localite?:{
-        code_postal?:string;
+        code_postale?:string;
         province?:string;
         localite?:string;
     }

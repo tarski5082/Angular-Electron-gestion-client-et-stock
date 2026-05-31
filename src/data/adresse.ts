@@ -5,6 +5,7 @@ import { prisma } from './dbconnect';
 
 
 export interface _Adresse{
+  id_adresse?:number;
   rue:string;
   numero:string;
   boite:string;
@@ -13,7 +14,22 @@ export interface _Adresse{
 
 
 export async function createAdress(data: _Adresse) {
+
   try {
+
+    const existingAdresse = await prisma.adresse.findFirst({
+      where:{
+        rue:data.rue,
+        numero:data.numero,
+        boite:data.boite||'',
+        id_localite:data.id_localite
+      }
+    });
+    if(existingAdresse){
+      return existingAdresse;
+    }
+
+
     const newAdress = await prisma.adresse.create({data});
     return newAdress;
   } catch (error) {

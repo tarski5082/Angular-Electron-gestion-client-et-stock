@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ElectronService } from './electron-service'; 
-import { Client } from '../../types/client';
+
 @Injectable({
   providedIn: 'root',
 })

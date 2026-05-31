@@ -1,6 +1,5 @@
 <div class="form-container">
   <h2>Inscription Client</h2>
-  
   <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
     
     <div class="form-row">
@@ -51,10 +50,10 @@
 
       <div formGroupName="localite" class="form-row grid-localite">
         <div class="form-group">
-          <label for="code_postal">Code Postal <span class="required">*</span></label>
-          <input id="code_postal" type="text" formControlName="code_postal" placeholder="6000">
+          <label for="code_postale">Code Postal <span class="required">*</span></label>
+          <input id="code_postale" type="text" formControlName="code_postale" placeholder="6000">
           
-          @if (customerForm.get('adresse.localite.code_postal')?.touched && customerForm.get('adresse.localite.code_postal')?.invalid) {
+          @if (customerForm.get('adresse.localite.code_postale')?.touched && customerForm.get('adresse.localite.code_postale')?.invalid) {
             <div class="error">4 chiffres requis.</div>
           }
         </div>
